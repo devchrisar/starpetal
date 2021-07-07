@@ -11,16 +11,29 @@ button:hover {
   cursor: pointer;
 }
 .Navbar {
-  background-color: #021e39;
+  background-color: #74c69d;
   width: 100%;
   height: 80px;
   display: flex;
+  overflow-x: hidden;
 
   .Nav_leftSide {
     flex: 50%;
     display: flex;
     justify-content: left;
     align-items: center;
+
+    button {
+      display: none;
+      margin-left: 20px;
+      background: none;
+      border: none;
+    }
+
+    #navHidden {
+      display: flex;
+    }
+
     .routers {
       max-height: 80px;
 
@@ -56,7 +69,7 @@ button:hover {
     }
   }
 }
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 880px) {
   .Navbar .Nav_leftSide .routers a {
     font-size: 20px;
   }
@@ -64,6 +77,30 @@ button:hover {
 @media only screen and (max-width: 750px) {
   .Navbar .Nav_leftSide .routers a {
     font-size: 15px;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .Navbar .Nav_leftSide button {
+    display: flex;
+  }
+  .Navbar .Nav_leftSide .routers {
+    display: none;
+  }
+  .Navbar .Nav_leftSide #navHidden {
+    position: absolute;
+    left: 0px;
+    top: 80px;
+    height: 230px;
+    max-height: 230px;
+    width: 100%;
+    background-color: #74c69d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .Navbar .Nav_leftSide #navHidden a {
+    margin: 10px;
+    font-size: 25px;
   }
 }
 .App-logo {
