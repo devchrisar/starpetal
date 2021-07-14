@@ -11,6 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import {AddShoppingCart} from '@material-ui/icons';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Counter from './buttonCounter';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -36,10 +37,11 @@ const useStyles = makeStyles((theme) => ({
 export default function ItemListContainer() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-
+  
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
 
   return (
     <Card className={classes.root}>
@@ -67,14 +69,15 @@ export default function ItemListContainer() {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to cart">
+        <IconButton aria-label="add to cart" >
           <AddShoppingCart fontSize="large" />
         </IconButton>
+        <Counter />
         {Array(4)
         .fill()
         .map((_,i)=>(
-        <p>&#11088;</p>
-        ))
+          <p>&#11088;</p>
+          ))
         }
         <IconButton
           className={clsx(classes.expand, {
