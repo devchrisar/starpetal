@@ -1,11 +1,24 @@
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #040303;
+    --text-color: #fff;
+  }
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-color: #fff;
+    --text-color: #000;
+  }
+}
 .App {
-  width: 100vw;
   height: 100vh;
   text-align: center;
 }
 body {
   margin: 0;
   padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 button:hover {
   cursor: pointer;
