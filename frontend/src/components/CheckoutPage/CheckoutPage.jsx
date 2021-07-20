@@ -1,22 +1,49 @@
 import React from "react";
-import product from "../itemDetail";
+import { makeStyles } from "@material-ui/core/styles";
+import { Grid, Typography } from "@material-ui/core";
+import CheckoutCard from "../CheckoutCard/CheckoutCard";
+import products from "../itemDetail";
+import TotalCount from "../TotalCount";
 
-export default function CheckoutPage() {
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    padding: "2rem",
+  },
+}));
+
+const CheckoutPage = () => {
+  const classes = useStyles();
+
+  function Formrow() {
+    return (
+      <React.Fragment>
+        {products.map((item) => (
+          <Grid item xs={12} sm={8} md={6} lg={4}>
+            <CheckoutCard key={item.id} product={item} />
+          </Grid>
+        ))}
+      </React.Fragment>
+    );
+  }
   return (
-    <div>
-      <div className="row">
-        <div className="col-2">
-          <img className="large" src={product.image} alt={product.name}></img>
-        </div>
-        <div className="col-1">
-          <ul>
-            <li>
-              <h1>{product.name}</h1>
-            </li>
-          </ul>
-        </div>
-        <div className="col-1"></div>
-      </div>
+    <div className={classes.root}>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Typography align="center" gutterBottom variant="h4">
+            Carrito
+          </Typography>
+        </Grid>
+        <Grid item xs={12} sm={8} md={9} container spacing={2}>
+          <Formrow />
+        </Grid>
+        <Grid item xs={12} sm={4} md={3}>
+          <Typography align="center" gutterBottom variant="h4">
+            <TotalCount />
+          </Typography>
+        </Grid>
+      </Grid>
     </div>
   );
-}
+};
+export default CheckoutPage;

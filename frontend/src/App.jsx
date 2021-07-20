@@ -14,7 +14,7 @@ function App() {
       <div className="App">
         <Navbar />
         <CheckoutPage />
-        <ItemDetailContainer />
+        {/* <ItemDetailContainer /> */}
         <SideBar />
         {/* <ItemListContainer /> */}
         <Footer />
