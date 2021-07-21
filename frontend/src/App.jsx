@@ -1,11 +1,12 @@
 import "./App.scss";
 import Navbar from "./components/Navbar";
-// import ItemListContainer from "./components/itemListContainer";
+import ItemListContainer from "./components/itemListContainer";
 import ItemDetailContainer from "./components/itemDetailContainer";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import SideBar from "./components/sideBar";
 import Footer from "./components/footer/footer";
 import CheckoutPage from "./components/CheckoutPage/CheckoutPage";
+import CheckoutCard from "./components/CheckoutCard/CheckoutCard";
 
 function App() {
   return (
@@ -13,10 +14,11 @@ function App() {
       {/* <Route path="/" component={as}></Route> */}
       <div className="App">
         <Navbar />
-        <CheckoutPage />
-        {/* <ItemDetailContainer /> */}
+        {/* <CheckoutPage />
+        <CheckoutCard /> */}
+        <ItemDetailContainer />
         <SideBar />
-        {/* <ItemListContainer /> */}
+        <ItemListContainer />
         <Footer />
       </div>
     </Router>
