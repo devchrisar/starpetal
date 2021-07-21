@@ -11,8 +11,9 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { AddShoppingCart } from "@material-ui/icons";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Counter from "./buttonCounter";
 import accounting from "accounting";
+import { actionTypes } from "../reducer";
+import { useStateValue } from "../StateProvider";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,10 +42,26 @@ export default function ItemListContainer({
   product: { id, name, productType, price, rating, image, description },
 }) {
   const classes = useStyles();
+  const [{ basket }, dispatch] = useStateValue();
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+
+  const addtoBasket = () => {
+    dispatch({
+      type: actionTypes.ADD_TO_BASKET,
+      item: {
+        id,
+        name,
+        productType,
+        image,
+        price,
+        rating,
+        description,
+      },
+    });
   };
 
   return (
@@ -69,10 +86,9 @@ export default function ItemListContainer({
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to cart">
+        <IconButton aria-label="add to cart" onClick={addtoBasket}>
           <AddShoppingCart fontSize="large" />
         </IconButton>
-        <Counter />
         {Array(rating)
           .fill()
           .map((_, i) => (

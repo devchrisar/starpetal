@@ -9,7 +9,7 @@ const Navbar = () => {
     <div className="Navbar">
       <div className="Nav_leftSide">
         <div className="routers" id={showLink ? "navHidden" : ""}>
-          <a href="/home">Inicio</a>
+          <a href="/">Inicio</a>
           <a href="/productos">Productos</a>
         </div>
         <button onClick={() => SetShowLink(!showLink)}>
