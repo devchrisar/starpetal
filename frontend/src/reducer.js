@@ -11,7 +11,10 @@ export const actionTypes = {
 }
 
 export const getTotalBasket = (basket) => {
-   return  basket?.reduce((amount,item) => item.price + amount, 0)
+    return  basket?.reduce((amount,item) => item.price * item.quantity + amount, 0)
+}
+export const getTotalQty = (basket) => {
+    return  basket?.reduce((amount,item) => item.quantity + amount, 0)
 }
 
 const reducer = (state,action) => {
@@ -54,8 +57,8 @@ const reducer = (state,action) => {
                 return item;
             }).filter((item) => item.quantity !== 0)
             return { ...state, basket: outdateCart}
-        
-        
+
+
         default: return state
     }    
 }
