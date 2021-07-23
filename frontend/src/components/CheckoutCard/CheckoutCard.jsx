@@ -33,10 +33,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CheckoutCard({
-  product: { id, name, productType, price, rating, image, description },
+  product: { id, name, productType, price, rating, image, quantity },
 }) {
   const classes = useStyles();
   const [{ basket }, dispatch] = useStateValue();
+
+  const increment = () => {
+    dispatch({
+      type: actionTypes.INCREMENT,
+      payload: id,
+    });
+  };
+  const decrement = () => {
+    dispatch({
+      type: actionTypes.DECREMENT,
+      payload: id,
+    });
+  };
 
   const removeItem = () =>
     dispatch({
@@ -68,11 +81,11 @@ export default function CheckoutCard({
               <p>&#11088;</p>
             ))}
         </div>
-        <Button type="button" size="small">
+        <Button type="button" size="small" onClick={decrement}>
           -
         </Button>
-        <Typography>5</Typography>
-        <Button type="button" size="small">
+        <Typography>{quantity}</Typography>
+        <Button type="button" size="small" onClick={increment}>
           +
         </Button>
         <IconButton>

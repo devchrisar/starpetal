@@ -39,7 +39,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ItemListContainer({
-  product: { id, name, productType, price, rating, image, description },
+  product: {
+    id,
+    name,
+    productType,
+    price,
+    rating,
+    image,
+    description,
+    quantity,
+  },
 }) {
   const classes = useStyles();
   const [{ basket }, dispatch] = useStateValue();
@@ -60,6 +69,7 @@ export default function ItemListContainer({
         price,
         rating,
         description,
+        quantity,
       },
     });
   };

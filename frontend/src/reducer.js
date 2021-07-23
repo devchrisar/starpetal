@@ -4,7 +4,10 @@ export const initialState = {
 
 export const actionTypes = {
     ADD_TO_BASKET: "ADD_TO_BASKET",
-    REMOVE_ITEM: "REMOVE_ITEM"
+    REMOVE_ITEM: "REMOVE_ITEM",
+    CLEAR_CART: "CLEAR_CART",
+    INCREMENT: "INCREMENT",
+    DECREMENT: "DECREMENT"
 }
 
 export const getTotalBasket = (basket) => {
@@ -30,6 +33,29 @@ const reducer = (state,action) => {
                 ...state,
                 basket: newBasket,
             }
+        case "CLEAR_CART":
+            return {
+                ...state,
+                basket: [],
+            }
+        case "INCREMENT":
+            const updateCart = state.basket.map((item)  => {
+                if (item.id === action.payload) {
+                    return {...item, quantity: item.quantity + 1};
+                }
+                return item;
+            })
+            return { ...state, basket: updateCart}
+        case "DECREMENT":
+            const outdateCart = state.basket.map((item)  => {
+                if (item.id === action.payload) {
+                    return {...item, quantity: item.quantity - 1};
+                }
+                return item;
+            }).filter((item) => item.quantity !== 0)
+            return { ...state, basket: outdateCart}
+        
+        
         default: return state
     }    
 }

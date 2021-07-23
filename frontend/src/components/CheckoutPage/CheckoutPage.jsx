@@ -1,9 +1,10 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Grid, Typography } from "@material-ui/core";
+import { Button, Grid, Typography } from "@material-ui/core";
 import CheckoutCard from "../CheckoutCard/CheckoutCard";
 import TotalCount from "../TotalCount";
 import { useStateValue } from "../../StateProvider";
+import { actionTypes } from "../../reducer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,11 +18,16 @@ const CheckoutPage = () => {
   const [{ basket }, dispatch] = useStateValue();
 
   const isEmpty = !basket.length;
+
   const EmptyCart = () => (
     <Typography variant="subtitle1">
       No hay nada en el carrito, vuelve cuando hallas cosechado una planta🌼
     </Typography>
   );
+
+  const clearCart = () => {
+    return dispatch({ type: actionTypes.CLEAR_CART });
+  };
 
   function Formrow() {
     return (
@@ -52,6 +58,13 @@ const CheckoutPage = () => {
             <Typography align="center" gutterBottom variant="h4">
               <TotalCount />
             </Typography>
+            <Button
+              className={classes.button}
+              variant="contained"
+              onClick={clearCart}
+            >
+              Limpiar
+            </Button>
           </Grid>
         </Grid>
       )}
