@@ -12,6 +12,7 @@ import {
   FaCcMastercard,
   FaCcPaypal,
 } from "react-icons/fa";
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   control: {
@@ -94,7 +95,7 @@ export default function Footer() {
                   <img src={logo} className="img-fluid" alt="logo" />
                 </div>
                 <div className="footer-text">
-                  <p>
+                  <Typography>
                     Hello guys! Welcome to Star Plant, your number one source
                     for all things related to plants. We're dedicated to giving
                     you the very best of us with a focus on quality and
@@ -102,7 +103,7 @@ export default function Footer() {
                     much as We enjoy offering them to you. If you have any
                     questions or comments, please don't hesitate to contact us.
                     Sincerely, star plant.
-                  </p>
+                  </Typography>
                 </div>
               </div>
             </div>
@@ -143,7 +144,7 @@ export default function Footer() {
             <div className="container">
               <div className="row align-items-center">
                 <div className="col-lg-6 col-sm-7">
-                  <p className="mb-0 f_400">
+                  <Typography className="mb-0 f_400" component="div">
                     © Star⭐Plant Inc.. 2021-2022 All rights reserved.
                     <Grid
                       container
@@ -158,7 +159,7 @@ export default function Footer() {
                         <FaCcDinersClub size="1.4rem" color="black" />
                       </Grid>
                     </Grid>
-                  </p>
+                  </Typography>
                 </div>
               </div>
             </div>

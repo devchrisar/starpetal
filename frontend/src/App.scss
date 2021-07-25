@@ -1,3 +1,18 @@
+//?colors
+$dark-color: #141414;
+$dark-color-light: #8a8a8a;
+$dark-color-lighten: #f2f2f2;
+$white-color: #fff;
+//?margins
+$mb-1: 0.5rem;
+$mb-2: 1rem;
+$mb-3: 1.5rem;
+$mb-4: 2rem;
+$mb-5: 2.5rem;
+$mb-6: 3rem;
+//?z-index
+$z-fixed: 100;
+
 .App {
   height: 100vh;
   text-align: center;
@@ -6,15 +21,26 @@ body {
   margin: 0;
   padding: 0;
 }
+ul {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: $dark-color;
+}
 button:hover {
   cursor: pointer;
 }
+//! FRONT PAGE
 .Navbar {
-  background-color: #74c69d;
+  background-color: #ffffff;
   width: 100%;
   height: 80px;
   display: flex;
   overflow-x: hidden;
+  overflow-y: hidden;
 
   .Nav_leftSide {
     flex: 50%;
@@ -36,9 +62,9 @@ button:hover {
     .routers {
       max-height: 80px;
 
-      a {
+      .logo__nav {
         text-decoration: none;
-        color: white;
+        color: $dark-color;
         font-size: 25px;
         margin-left: 15px;
       }
@@ -68,6 +94,9 @@ button:hover {
     }
   }
 }
+.Nav__icons {
+  color: $dark-color-light;
+}
 @media only screen and (max-width: 880px) {
   .Navbar .Nav_leftSide .routers a {
     font-size: 20px;
@@ -88,17 +117,87 @@ button:hover {
   .Navbar .Nav_leftSide #navHidden {
     position: absolute;
     left: 0px;
-    top: 80px;
+    top: 115px;
     height: 230px;
     max-height: 230px;
     width: 100%;
-    background-color: #74c69d;
+    background-color: #ffffff;
+    box-shadow: 1px 0 0 rgba(22, 8, 43, 1);
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: $z-fixed;
   }
   .Navbar .Nav_leftSide #navHidden a {
     margin: 10px;
     font-size: 25px;
   }
+}
+#searchBox {
+  border-radius: 55px;
+  padding: 17px;
+  background-color: #f0f3ff;
+  align-items: center;
+  outline: none;
+}
+.Nav__iconsSearch {
+  position: absolute;
+  right: 39px;
+  top: 55px;
+}
+#topbar {
+  background: #80b918;
+  height: 40px;
+  font-size: 14px;
+  transition: all 0.5s;
+  z-index: 996;
+}
+
+#topbar.topbar-scrolled {
+  top: -40px;
+}
+
+#topbar .contact-info a {
+  line-height: 1;
+  color: #444444;
+  transition: 0.3s;
+}
+
+#topbar .contact-info a:hover {
+  color: #fff;
+}
+
+#topbar .contact-info .topbar_icon {
+  color: #fff;
+  padding-right: 4px;
+  margin-left: 15px;
+  line-height: 0;
+}
+
+#topbar .contact-info .topbar_icon:first-child {
+  margin-left: 0;
+}
+
+.logo__nav {
+  text-decoration: none;
+  transition: 0.4s;
+  border-radius: 99px;
+  font-weight: 600;
+  font-size: 1.3rem;
+  border-radius: 50px;
+  &:hover {
+    background: #aacc00;
+    box-shadow: inset 11px 11px 63px #aacc00, inset -11px -11px 63px #aacc00;
+  }
+}
+//? front page card details
+.ShowDetails {
+  position: absolute;
+  margin-left: $mb-6;
+  font-size: 15px;
+  font-weight: bold;
+  background: #ffc426;
+  padding: 5px;
+  color: #000;
+  border-radius: 8px;
 }

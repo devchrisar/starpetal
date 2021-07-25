@@ -2,7 +2,6 @@ import "./App.scss";
 import Navbar from "./components/Navbar";
 import ItemDetailContainer from "./components/itemDetailContainer";
 import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
-import SideBar from "./components/sideBar";
 import Footer from "./components/footer/footer";
 import CheckoutPage from "./components/CheckoutPage/CheckoutPage";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
@@ -35,7 +34,6 @@ function App() {
             </Route>
             <Route path="/">
               <ItemDetailContainer />
-              <SideBar />
               <Footer />
             </Route>
           </Switch>

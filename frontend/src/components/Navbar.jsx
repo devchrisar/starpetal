@@ -1,25 +1,46 @@
 import React, { useState } from "react";
 import "../App.scss";
-import { BsGridFill } from "react-icons/bs";
+import { HiOutlineViewGridAdd } from "react-icons/hi";
 import CartWidget from "../components/CartWidget";
+import { SiMinutemailer } from "react-icons/si";
+import { RiSearchEyeFill } from "react-icons/ri";
+import { MdPhone } from "react-icons/md";
+import { Typography } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [showLink, SetShowLink] = useState(false);
   return (
-    <div className="Navbar">
-      <div className="Nav_leftSide">
-        <div className="routers" id={showLink ? "navHidden" : ""}>
-          <a href="/">Inicio</a>
-          <a href="/productos">Productos</a>
+    /*======= Top Bar ======= */
+    <div>
+      <div id="topbar" className="d-flex align-items-center fixed-top">
+        <div className="container d-flex justify-content-between">
+          <div className="contact-info d-flex align-items-center">
+            <SiMinutemailer size="2em" className="topbar_icon" />
+            <a href="mailto:devchrisar.admin@zohomail.com">
+              devchrisar.admin@zohomail.com
+            </a>
+            <MdPhone size="2em" className="topbar_icon" /> +9876543210
+          </div>
         </div>
-        <button onClick={() => SetShowLink(!showLink)}>
-          <BsGridFill size="2em" />
-        </button>
       </div>
-      <div className="Nav_rightSide">
-        <CartWidget />
-        <input type="text" placeholder="Buscar producto" />
-        <button>Buscar</button>
+
+      <div className="Navbar">
+        <div className="Nav_leftSide">
+          <div className="routers" id={showLink ? "navHidden" : ""}>
+            <Link to="/">
+              <p className="logo__nav">Inicio</p>
+            </Link>
+          </div>
+          <button onClick={() => SetShowLink(!showLink)}>
+            <HiOutlineViewGridAdd size="1.5rem" className="Nav__icons" />
+          </button>
+        </div>
+        <div className="Nav_rightSide">
+          <CartWidget className="Nav__icons" />
+          <input type="text" id="searchBox" placeholder="Buscar producto" />
+          <RiSearchEyeFill className="Nav__iconsSearch" size="1.5rem" />
+        </div>
       </div>
     </div>
   );

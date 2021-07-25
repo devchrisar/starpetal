@@ -11,6 +11,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: "2rem",
   },
+  button: {
+    marginTop: "-4rem",
+  },
 }));
 
 const CheckoutPage = () => {
@@ -57,14 +60,14 @@ const CheckoutPage = () => {
           <Grid item xs={12} sm={4} md={3}>
             <Typography align="center" gutterBottom variant="h4">
               <TotalCount />
+              <Button
+                className={classes.button}
+                variant="contained"
+                onClick={clearCart}
+              >
+                Limpiar
+              </Button>
             </Typography>
-            <Button
-              className={classes.button}
-              variant="contained"
-              onClick={clearCart}
-            >
-              Limpiar
-            </Button>
           </Grid>
         </Grid>
       )}

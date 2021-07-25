@@ -14,6 +14,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import accounting from "accounting";
 import { actionTypes } from "../reducer";
 import { useStateValue } from "../StateProvider";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -89,9 +90,12 @@ export default function ItemListContainer({
         title={name}
         subheader="En Stock"
       />
+      <Link to="/product/:id">
+        <span className="ShowDetails">Ver mas</span>
+      </Link>
       <CardMedia className={classes.media} image={image} title={name} />
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
+        <Typography variant="body2" color="textSecondary" component="div">
           {productType}
         </Typography>
       </CardContent>
