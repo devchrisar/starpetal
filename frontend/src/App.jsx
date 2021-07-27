@@ -4,6 +4,7 @@ import ItemDetailContainer from "./components/itemDetailContainer";
 import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
 import Footer from "./components/footer/footer";
 import CheckoutPage from "./components/CheckoutPage/CheckoutPage";
+import DetailScreen from "./components/DetailScreen/DetailScreen";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 
 const MyTheme = createTheme({
@@ -32,7 +33,10 @@ function App() {
             <Route path="/cart">
               <CheckoutPage />
             </Route>
-            <Route path="/">
+            <Route path="/product/:id">
+              <DetailScreen />
+            </Route>
+            <Route path="/" exact>
               <ItemDetailContainer />
               <Footer />
             </Route>

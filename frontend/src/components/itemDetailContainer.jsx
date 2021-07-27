@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import ItemListContainer from "./itemListContainer";
+import Product from "./itemListContainer";
 import LoadingBox from "./LoadingBox/LoadingBox";
 import MessageBox from "./MessageBox/MessageBox";
 
@@ -43,7 +43,7 @@ export default function ItemDetailContainer() {
           <Grid container spacing={2}>
             {products.map((product) => (
               <Grid item xs={12} sm={6} md={4} lg={3}>
-                <ItemListContainer key={product.id} product={product} />
+                <Product key={product.id} product={product}></Product>
               </Grid>
             ))}
           </Grid>
