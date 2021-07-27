@@ -1,6 +1,6 @@
 import React from "react";
 import "./_footer.scss";
-import logo from "../../assets/logo.svg";
+import logo from "../../assets/logoRecurso_3@2x.png";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { FcPhone } from "react-icons/fc";
