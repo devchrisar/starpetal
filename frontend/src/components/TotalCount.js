@@ -5,6 +5,7 @@ import {getTotalBasket} from '../reducer'
 import {getTotalQty} from '../reducer'
 import { useStateValue } from "../StateProvider";
 import { CgShoppingBag } from "react-icons/cg";
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
 root: {
@@ -32,7 +33,9 @@ const TotalCount = () => {
         <div className={classes.root}>
             <h5 className={classes.title}>Total items: {getTotalQty(basket)}</h5>
             <h5>{accounting.formatMoney(getTotalBasket(basket))}</h5>
+            <Link to={`/checkout`}>
             <Button className={classes.button} variant="contained" color="secondary"><CgShoppingBag size="1.5rem" /> Comprar | {accounting.formatMoney(getTotalBasket(basket))} </Button>
+            </Link>
             
         </div>
     )

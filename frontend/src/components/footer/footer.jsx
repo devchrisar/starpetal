@@ -160,6 +160,9 @@ export default function Footer() {
                       </Grid>
                     </Grid>
                   </Typography>
+                  <Typography className="mb-0 f_400" component="div">
+                    Hecho con 💖 por Christopher Henry Arias Arcia
+                  </Typography>
                 </div>
               </div>
             </div>

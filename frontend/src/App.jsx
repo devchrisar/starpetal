@@ -6,6 +6,7 @@ import Footer from "./components/footer/footer";
 import CheckoutPage from "./components/CheckoutPage/CheckoutPage";
 import DetailScreen from "./components/DetailScreen/DetailScreen";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+import Checkout from "./components/CheckoutForm/Checkout";
 
 const MyTheme = createTheme({
   palette: {
@@ -35,6 +36,9 @@ function App() {
             </Route>
             <Route path="/product/:id">
               <DetailScreen />
+            </Route>
+            <Route path="/checkout">
+              <Checkout />
             </Route>
             <Route path="/" exact>
               <ItemDetailContainer />

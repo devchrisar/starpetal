@@ -5,7 +5,6 @@ import CartWidget from "../components/CartWidget";
 import { SiMinutemailer } from "react-icons/si";
 import { RiSearchEyeFill } from "react-icons/ri";
 import { MdPhone } from "react-icons/md";
-import { Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {

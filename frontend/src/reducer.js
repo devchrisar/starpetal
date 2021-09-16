@@ -1,5 +1,6 @@
 export const initialState = {
-    basket: []
+    basket: [],
+    shippingData: {}
 }
 
 export const actionTypes = {
@@ -7,7 +8,8 @@ export const actionTypes = {
     REMOVE_ITEM: "REMOVE_ITEM",
     CLEAR_CART: "CLEAR_CART",
     INCREMENT: "INCREMENT",
-    DECREMENT: "DECREMENT"
+    DECREMENT: "DECREMENT",
+    SET_SHIPPINGDATA: "SET_SHIPPINGDATA",
 }
 
 export const getTotalBasket = (basket) => {
@@ -57,6 +59,11 @@ const reducer = (state,action) => {
                 return item;
             }).filter((item) => item.quantity !== 0)
             return { ...state, basket: outdateCart}
+        case "SET_SHIPPINGDATA":
+            return { 
+                ...state,
+                shippingData: action.shippingData, 
+            };
 
 
         default: return state
