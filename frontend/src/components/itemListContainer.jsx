@@ -90,7 +90,7 @@ export default function ItemListContainer({
         title={name}
         subheader="En Stock"
       />
-      <Link to={`/product/${id}`}>
+      <Link to={`/products/${id}`}>
         <span className="ShowDetails">Ver mas</span>
       </Link>
       <CardMedia className={classes.media} image={image} title={name} />

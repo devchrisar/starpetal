@@ -22,7 +22,9 @@ import ReactImageMagnify from "react-image-magnify";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ReactSlick from "react-slick";
-// import Product from "../itemDetail";
+import { Link } from "react-router-dom";
+import { actionTypes } from "../../reducer";
+import { useStateValue } from "../../StateProvider";
 
 const useStyles = makeStyles({
   root: {
@@ -49,22 +51,37 @@ const useStyles = makeStyles({
   },
 });
 
-const photos = [
-  {
-    name: "pic01",
-    url: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.growjoy.com%2Fstore%2Fpc%2Fcatalog%2Fhaworthia_zebra_plant_1475_detail.jpg&f=1&nofb=1",
+export default function DetailScreen({
+  product: {
+    id,
+    name,
+    productType,
+    price,
+    rating,
+    image,
+    image2,
+    image3,
+    description,
+    quantity,
   },
-  {
-    name: "pic02",
-    url: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fadamtropics.com%2Fimages%2Fstories%2Fvirtuemart%2Fproduct%2FIMG_0558.jpg&f=1&nofb=1",
-  },
-  {
-    name: "pic03",
-    url: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.ikea.com%2Fus%2Fen%2Fimages%2Fproducts%2Fdracaena-cintho-potted-plant__0324672_PE516943_S5.JPG&f=1&nofb=1",
-  },
-];
+}) {
+  const classes = useStyles();
+  const [{ basket }, dispatch] = useStateValue();
 
-export default function ProductScreen() {
+  const photos = [
+    {
+      name: "pic01",
+      url: `${image}`,
+    },
+    {
+      name: "pic02",
+      url: `${image2}`,
+    },
+    {
+      name: "pic03",
+      url: `${image3}`,
+    },
+  ];
   var settings = {
     dots: true,
     fade: true,
@@ -74,7 +91,21 @@ export default function ProductScreen() {
     slidesToScroll: 1,
     className: "slides",
   };
-  const classes = useStyles();
+  const addtoBasket = () => {
+    dispatch({
+      type: actionTypes.ADD_TO_BASKET,
+      item: {
+        id,
+        name,
+        productType,
+        image,
+        price,
+        rating,
+        description,
+        quantity,
+      },
+    });
+  };
 
   return (
     <Container maxWidth="xl">
@@ -111,12 +142,10 @@ export default function ProductScreen() {
               </CardMedia>
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
-                  Componente estático
+                  {name}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
-                  ESTÁTICO
+                  {description}
                 </Typography>
               </CardContent>
             </CardActionArea>
@@ -143,7 +172,7 @@ export default function ProductScreen() {
         <div className="productScreen_Right">
           <div className="Right_info">
             <p>
-              Precio: <span>{accounting.formatMoney(499)}</span>
+              Precio: <span>{accounting.formatMoney(price)}</span>
             </p>
             <div className="color__product">
               <p>
@@ -154,7 +183,13 @@ export default function ProductScreen() {
               <span></span>
               <p>Color: </p>
             </div>
-            <Button color="primary" variant="outlined">
+            <Button
+              color="primary"
+              variant="outlined"
+              component={Link}
+              to="/cart"
+              onClick={addtoBasket}
+            >
               Finalizar compra
             </Button>
           </div>

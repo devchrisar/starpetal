@@ -5,7 +5,7 @@ const products = [
         productType: "planta 1",
         price: 45,
         rating: 3,
-        image: require("./img/Heart_Leaf_Philodendron/01.jpg"),
+        image: "./img/Heart_Leaf_Philodendron/01.jpg",
         description: "The Heart Leaf Philodendron is a common, giant plant and can be found in damp places. It blooms once a year, for 3 weeks.It has narrow, round leaves, which are usually dark orange. It also grows tiny flowers, which can be yellow and dark gold.These plants grow in small groups, but it's fairly simple to control and maintain their growth.They have no real use, besides their aesthetics."
     },
     {

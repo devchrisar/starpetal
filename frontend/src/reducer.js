@@ -1,15 +1,18 @@
 export const initialState = {
     basket: [],
-    shippingData: {}
+    shippingData: {},
+    paymentMessage: "",
 }
 
 export const actionTypes = {
     ADD_TO_BASKET: "ADD_TO_BASKET",
     REMOVE_ITEM: "REMOVE_ITEM",
+    EMPTY_BASKET: "EMPTY_BASKET",
     CLEAR_CART: "CLEAR_CART",
     INCREMENT: "INCREMENT",
     DECREMENT: "DECREMENT",
     SET_SHIPPINGDATA: "SET_SHIPPINGDATA",
+    SET_PAYMENT_MESSAGE: "SET_PAYMENT_MESSAGE",
 }
 
 export const getTotalBasket = (basket) => {
@@ -37,12 +40,17 @@ const reducer = (state,action) => {
             return {
                 ...state,
                 basket: newBasket,
-            }
+            };
+        case "EMPTY_BASKET":
+            return {
+                ...state,
+                basket: action.basket,
+            };    
         case "CLEAR_CART":
             return {
                 ...state,
                 basket: [],
-            }
+            };
         case "INCREMENT":
             const updateCart = state.basket.map((item)  => {
                 if (item.id === action.payload) {
@@ -64,9 +72,14 @@ const reducer = (state,action) => {
                 ...state,
                 shippingData: action.shippingData, 
             };
+        case "SET_PAYMENT_MESSAGE":
+            return { 
+                ...state,
+                paymentMessage: action.paymentMessage,  
+            };
 
 
-        default: return state
+        default: return state;
     }    
 }
 

@@ -3,16 +3,19 @@ import useStyles from './styles';
 import { useState } from 'react';
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
+import Confirmation from './Confirmation';
+import { useStateValue } from '../../StateProvider';
 
 const Checkout = () => {
     const classes = useStyles();
     const [activeStep,setActiveStep] = useState(0);
-    const steps = ['Shipping address', 'Payment details', 'Review your order'];
+    const [{ paymentMessage }, dispatch] = useStateValue();
+    const steps = ['Shipping address', 'Payment details'];
 
     const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
     const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
 
-    const Form = () => activeStep === 0 ? <AddressForm nextStep={nextStep} /> : <PaymentForm />;
+    const Form = () => activeStep === 0 ? <AddressForm nextStep={nextStep} /> : <PaymentForm backStep={backStep} nextStep={nextStep} />;
 
 return(
     <>
@@ -28,7 +31,9 @@ return(
                     </Step>
                 ))}
             </Stepper>
-            <Form />
+            {
+                activeStep === steps.length ? (<Confirmation message={paymentMessage}/>) : (<Form/>)
+            }
         </Paper>
     </main>
     </>
